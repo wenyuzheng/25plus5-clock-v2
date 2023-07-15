@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
 
@@ -24,6 +24,10 @@ function App() {
     setBreakLength((currVal) => currVal - 1);
   };
 
+  const incrementBreakLength = () => {
+    setBreakLength((currVal) => currVal + 1);
+  };
+
   return (
     <div className="App">
       <div id="break-label">Break Length</div>
@@ -32,7 +36,9 @@ function App() {
         Break-
       </button>
       <button id="session-decrement">Session-</button>
-      <button id="break-increment">Break+</button>
+      <button id="break-increment" onClick={incrementBreakLength}>
+        Break+
+      </button>
       <button id="session-increment">Session+</button>
       <span id="break-length">{breakLength}</span>
       <span id="session-length">25</span>
