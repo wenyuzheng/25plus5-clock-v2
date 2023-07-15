@@ -4,13 +4,20 @@ import DisplayTime from "./Components/DisplayTime";
 
 function App() {
   const [time, setTime] = useState(25 * 60);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
+    if (!start) return;
+
     const countdownOnce = setTimeout(() => {
       setTime(time - 1);
     }, 1000);
     return () => clearTimeout(countdownOnce);
-  }, [time, setTime]);
+  }, [time, setTime, start]);
+
+  const handleStart = () => {
+    setStart(true);
+  };
 
   return (
     <div className="App">
@@ -24,7 +31,9 @@ function App() {
       <span id="session-length">25</span>
       <span id="timer-label">Session</span>
       <DisplayTime time={time} />
-      <button id="start_stop">start_stop</button>
+      <button id="start_stop" onClick={handleStart}>
+        start_stop
+      </button>
       <button id="reset">reset</button>
     </div>
   );
