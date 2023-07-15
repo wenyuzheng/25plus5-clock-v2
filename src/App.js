@@ -9,6 +9,8 @@ function App() {
       <button id="session-decrement">Session-</button>
       <button id="break-increment">Break+</button>
       <button id="session-increment">Session+</button>
+      <span id="break-length">5</span>
+      <span id="session-length">25</span>
     </div>
   );
 }
