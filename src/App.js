@@ -1,6 +1,25 @@
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 
+const DisplayTime = ({ timeCurrent }) => {
+  return (
+    <span id="time-left">
+      {Math.floor(timeCurrent / 60)}:{timeCurrent % 60}
+    </span>
+  );
+};
+
 function App() {
+  const [time, setTime] = useState(25 * 60);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(time - 1);
+    }, 1000);
+  }, [time, setTime]);
+
+  console.log("rerender");
+
   return (
     <div className="App">
       <div id="break-label">Break Length</div>
@@ -12,7 +31,7 @@ function App() {
       <span id="break-length">5</span>
       <span id="session-length">25</span>
       <span id="timer-label">Session</span>
-      <span id="time-left">25:00</span>
+      <DisplayTime timeCurrent={time} />
       <button id="start_stop">start_stop</button>
       <button id="reset">reset</button>
     </div>
