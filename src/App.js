@@ -5,6 +5,7 @@ import DisplayTime from "./Components/DisplayTime";
 function App() {
   const [time, setTime] = useState(25 * 60);
   const [start, setStart] = useState(false);
+  const [breakLength, setBreakLength] = useState(5);
 
   useEffect(() => {
     if (!start) return;
@@ -19,15 +20,21 @@ function App() {
     setStart(!start);
   };
 
+  const decrementBreakLength = () => {
+    setBreakLength((currVal) => currVal - 1);
+  };
+
   return (
     <div className="App">
       <div id="break-label">Break Length</div>
       <div id="session-label">Session Length</div>
-      <button id="break-decrement">Break-</button>
+      <button id="break-decrement" onClick={decrementBreakLength}>
+        Break-
+      </button>
       <button id="session-decrement">Session-</button>
       <button id="break-increment">Break+</button>
       <button id="session-increment">Session+</button>
-      <span id="break-length">5</span>
+      <span id="break-length">{breakLength}</span>
       <span id="session-length">25</span>
       <span id="timer-label">Session</span>
       <DisplayTime time={time} />
