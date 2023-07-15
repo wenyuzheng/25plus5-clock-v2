@@ -22,19 +22,27 @@ function App() {
   };
 
   const decrementBreakLength = () => {
-    setBreakLength((currVal) => currVal - 1);
+    const newBreakLength = breakLength - 1;
+    if (newBreakLength <= 0) return;
+    setBreakLength(newBreakLength);
   };
 
   const incrementBreakLength = () => {
-    setBreakLength((currVal) => currVal + 1);
+    const newBreakLength = breakLength + 1;
+    if (newBreakLength > 60) return;
+    setBreakLength(newBreakLength);
   };
 
   const decrementSessionLength = () => {
-    setSessionLength((currVal) => currVal - 1);
+    const newSessionLength = sessionLength - 1;
+    if (newSessionLength <= 0) return;
+    setSessionLength(newSessionLength);
   };
 
   const incrementSessionLength = () => {
-    setSessionLength((currVal) => currVal + 1);
+    const newSessionLength = sessionLength + 1;
+    if (newSessionLength > 60) return;
+    setSessionLength(newSessionLength);
   };
 
   return (
