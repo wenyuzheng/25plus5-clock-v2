@@ -6,6 +6,7 @@ function App() {
   const [time, setTime] = useState(25 * 60);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(5);
+  const [sessionLength, setSessionLength] = useState(25);
 
   useEffect(() => {
     if (!start) return;
@@ -28,6 +29,14 @@ function App() {
     setBreakLength((currVal) => currVal + 1);
   };
 
+  const decrementSessionLength = () => {
+    setSessionLength((currVal) => currVal - 1);
+  };
+
+  const incrementSessionLength = () => {
+    setSessionLength((currVal) => currVal + 1);
+  };
+
   return (
     <div className="App">
       <div id="break-label">Break Length</div>
@@ -35,13 +44,17 @@ function App() {
       <button id="break-decrement" onClick={decrementBreakLength}>
         Break-
       </button>
-      <button id="session-decrement">Session-</button>
+      <button id="session-decrement" onClick={decrementSessionLength}>
+        Session-
+      </button>
       <button id="break-increment" onClick={incrementBreakLength}>
         Break+
       </button>
-      <button id="session-increment">Session+</button>
+      <button id="session-increment" onClick={incrementSessionLength}>
+        Session+
+      </button>
       <span id="break-length">{breakLength}</span>
-      <span id="session-length">25</span>
+      <span id="session-length">{sessionLength}</span>
       <span id="timer-label">Session</span>
       <DisplayTime time={time} />
       <button id="start_stop" onClick={handleStartStop}>
