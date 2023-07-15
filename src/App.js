@@ -4,15 +4,16 @@ import DisplayTime from "./Components/DisplayTime";
 
 const defaultBreakLength = 5;
 const defaultSessionLength = 25;
+const defaultTime = defaultSessionLength * 60;
 
 function App() {
-  const [time, setTime] = useState(defaultSessionLength * 60);
+  const [time, setTime] = useState(defaultTime);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(defaultBreakLength);
   const [sessionLength, setSessionLength] = useState(defaultSessionLength);
 
   useEffect(() => {
-    if (!start) return;
+    if (!start || time === 0) return;
 
     const countdownOnce = setTimeout(() => {
       setTime(time - 1);
