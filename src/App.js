@@ -48,12 +48,14 @@ function App() {
     const newSessionLength = sessionLength - 1;
     if (newSessionLength <= 0) return;
     setSessionLength(newSessionLength);
+    setTime(newSessionLength * 60);
   };
 
   const incrementSessionLength = () => {
     const newSessionLength = sessionLength + 1;
     if (newSessionLength > 60) return;
     setSessionLength(newSessionLength);
+    setTime(newSessionLength * 60);
   };
 
   return (

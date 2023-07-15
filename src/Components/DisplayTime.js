@@ -1,7 +1,14 @@
+const padZero = (time) => {
+  return time < 10 ? `0${time}` : time;
+};
+
 const DisplayTime = ({ time }) => {
+  const minute = Math.floor(time / 60);
+  const second = time % 60;
+
   return (
     <span id="time-left">
-      {Math.floor(time / 60)}:{time % 60}
+      {padZero(minute)}:{padZero(second)}
     </span>
   );
 };
