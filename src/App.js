@@ -15,8 +15,8 @@ function App() {
     return () => clearTimeout(countdownOnce);
   }, [time, setTime, start]);
 
-  const handleStart = () => {
-    setStart(true);
+  const handleStartStop = () => {
+    setStart(!start);
   };
 
   return (
@@ -31,7 +31,7 @@ function App() {
       <span id="session-length">25</span>
       <span id="timer-label">Session</span>
       <DisplayTime time={time} />
-      <button id="start_stop" onClick={handleStart}>
+      <button id="start_stop" onClick={handleStartStop}>
         start_stop
       </button>
       <button id="reset">reset</button>
