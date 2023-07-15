@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
 
+const defaultBreakLength = 5;
+const defaultSessionLength = 25;
+
 function App() {
-  const [time, setTime] = useState(25 * 60);
+  const [time, setTime] = useState(defaultSessionLength * 60);
   const [start, setStart] = useState(false);
-  const [breakLength, setBreakLength] = useState(5);
-  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(defaultBreakLength);
+  const [sessionLength, setSessionLength] = useState(defaultSessionLength);
 
   useEffect(() => {
     if (!start) return;
@@ -19,6 +22,13 @@ function App() {
 
   const handleStartStop = () => {
     setStart(!start);
+  };
+
+  const handleReset = () => {
+    setStart(false);
+    setTime(defaultSessionLength * 60);
+    setBreakLength(defaultBreakLength);
+    setSessionLength(defaultSessionLength);
   };
 
   const decrementBreakLength = () => {
@@ -68,7 +78,9 @@ function App() {
       <button id="start_stop" onClick={handleStartStop}>
         start_stop
       </button>
-      <button id="reset">reset</button>
+      <button id="reset" onClick={handleReset}>
+        reset
+      </button>
     </div>
   );
 }
