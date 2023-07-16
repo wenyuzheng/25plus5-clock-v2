@@ -7,13 +7,20 @@ const defaultSessionLength = 25;
 const defaultTime = defaultSessionLength * 60;
 
 function App() {
-  const [time, setTime] = useState(defaultTime);
+  const [time, setTime] = useState(3);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(defaultBreakLength);
   const [sessionLength, setSessionLength] = useState(defaultSessionLength);
+  const [isSession, setIsSession] = useState(true);
 
   useEffect(() => {
-    if (!start || time === 0) return;
+    if (!start) {
+      return;
+    }
+    if (time < 0) {
+      setTime(isSession ? breakLength * 60 : sessionLength * 60);
+      setIsSession(!isSession);
+    }
 
     const countdownOnce = setTimeout(() => {
       setTime(time - 1);
@@ -27,6 +34,7 @@ function App() {
 
   const handleReset = () => {
     setStart(false);
+    setIsSession(true);
     setTime(defaultSessionLength * 60);
     setBreakLength(defaultBreakLength);
     setSessionLength(defaultSessionLength);
@@ -76,7 +84,7 @@ function App() {
       </button>
       <span id="break-length">{breakLength}</span>
       <span id="session-length">{sessionLength}</span>
-      <span id="timer-label">Session</span>
+      <span id="timer-label">{isSession ? "Session" : "Break"}</span>
       <DisplayTime time={time} />
       <button id="start_stop" onClick={handleStartStop}>
         start_stop
