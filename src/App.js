@@ -3,13 +3,14 @@ import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
 import audioFile from "./assets/audio/beep.mp3";
 import LengthCard from "./Components/LengthCard";
+import Controls from "./Components/Controls";
 
 const defaultBreakLength = 5;
 const defaultSessionLength = 25;
 const defaultTime = defaultSessionLength * 60;
 
 function App() {
-  const [time, setTime] = useState(2);
+  const [time, setTime] = useState(defaultTime);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(defaultBreakLength);
   const [sessionLength, setSessionLength] = useState(defaultSessionLength);
@@ -93,12 +94,11 @@ function App() {
         <span id="timer-label">{isSession ? "Session" : "Break"}</span>
         <DisplayTime time={time} />
       </div>
-      <button id="start_stop" onClick={handleStartStop}>
-        start_stop
-      </button>
-      <button id="reset" onClick={handleReset}>
-        reset
-      </button>
+      <Controls
+        handleReset={handleReset}
+        handleStartStop={handleStartStop}
+        start={start}
+      />
       <audio id="beep" src={audioFile} ref={beepRef} />
     </div>
   );

@@ -7,7 +7,7 @@ const DisplayTime = ({ time }) => {
   const second = time % 60;
 
   return (
-    <span id="time-left" style={{ fontSize: 60 }}>
+    <span id="time-left" style={{ fontSize: 80 }}>
       {padZero(minute)}:{padZero(second)}
     </span>
   );
