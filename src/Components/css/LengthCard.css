@@ -1,0 +1,17 @@
+#length-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#adjust-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#length-card button {
+    margin: 5px;
+}

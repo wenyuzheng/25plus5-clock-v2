@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
 import audioFile from "./assets/audio/beep.mp3";
+import LengthCard from "./Components/LengthCard";
 
 const defaultBreakLength = 5;
 const defaultSessionLength = 25;
@@ -73,22 +74,21 @@ function App() {
 
   return (
     <div className="App">
-      <div id="break-label">Break Length</div>
-      <div id="session-label">Session Length</div>
-      <button id="break-decrement" onClick={decrementBreakLength}>
-        Break-
-      </button>
-      <button id="session-decrement" onClick={decrementSessionLength}>
-        Session-
-      </button>
-      <button id="break-increment" onClick={incrementBreakLength}>
-        Break+
-      </button>
-      <button id="session-increment" onClick={incrementSessionLength}>
-        Session+
-      </button>
-      <span id="break-length">{breakLength}</span>
-      <span id="session-length">{sessionLength}</span>
+      <h1>25 + 5 Clock</h1>
+      <div id="length-cards">
+        <LengthCard
+          name="Break"
+          length={breakLength}
+          decrement={decrementBreakLength}
+          increment={incrementBreakLength}
+        />
+        <LengthCard
+          name="Session"
+          length={sessionLength}
+          decrement={decrementSessionLength}
+          increment={incrementSessionLength}
+        />
+      </div>
       <span id="timer-label">{isSession ? "Session" : "Break"}</span>
       <DisplayTime time={time} />
       <button id="start_stop" onClick={handleStartStop}>
