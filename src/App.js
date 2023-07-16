@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
 import audioFile from "./assets/audio/beep.mp3";
@@ -8,20 +8,19 @@ const defaultSessionLength = 25;
 const defaultTime = defaultSessionLength * 60;
 
 function App() {
-  const [time, setTime] = useState(defaultTime);
+  const [time, setTime] = useState(2);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(defaultBreakLength);
   const [sessionLength, setSessionLength] = useState(defaultSessionLength);
   const [isSession, setIsSession] = useState(true);
+  const beepRef = useRef(null);
 
   useEffect(() => {
-    const beep = document.getElementById("beep");
-
     if (!start) {
       return;
     }
     if (time < 0) {
-      beep.play();
+      beepRef.current.play();
       setTime(isSession ? breakLength * 60 : sessionLength * 60);
       setIsSession(!isSession);
     }
@@ -42,6 +41,8 @@ function App() {
     setTime(defaultSessionLength * 60);
     setBreakLength(defaultBreakLength);
     setSessionLength(defaultSessionLength);
+    beepRef.current.pause();
+    beepRef.current.currentTime = 0;
   };
 
   const decrementBreakLength = () => {
@@ -96,7 +97,7 @@ function App() {
       <button id="reset" onClick={handleReset}>
         reset
       </button>
-      <audio id="beep" src={audioFile} />
+      <audio id="beep" src={audioFile} ref={beepRef} />
     </div>
   );
 }
