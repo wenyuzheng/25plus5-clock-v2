@@ -1,11 +1,27 @@
 .App {
   text-align: center;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #length-cards {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 25px;
+  padding: 30px;
+  border: 7px solid #13353a;
+  width: fit-content;
+  border-radius: 40px;
 }
 

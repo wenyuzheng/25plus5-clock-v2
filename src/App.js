@@ -89,8 +89,10 @@ function App() {
           increment={incrementSessionLength}
         />
       </div>
-      <span id="timer-label">{isSession ? "Session" : "Break"}</span>
-      <DisplayTime time={time} />
+      <div id="display">
+        <span id="timer-label">{isSession ? "Session" : "Break"}</span>
+        <DisplayTime time={time} />
+      </div>
       <button id="start_stop" onClick={handleStartStop}>
         start_stop
       </button>
