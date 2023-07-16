@@ -1,14 +1,15 @@
+import { Button } from "react-bootstrap";
 import "./css/Controls.css";
 
 const Controls = ({ start, handleStartStop, handleReset }) => {
   return (
     <div id="controls">
-      <button id="start_stop" onClick={handleStartStop}>
+      <Button id="start_stop" variant="success" onClick={handleStartStop}>
         {start ? "Pause" : "Start"}
-      </button>
-      <button id="reset" onClick={handleReset}>
+      </Button>
+      <Button id="reset" variant="success" onClick={handleReset}>
         Reset
-      </button>
+      </Button>
     </div>
   );
 };

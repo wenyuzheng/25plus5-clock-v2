@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import "./css/LengthCard.css";
 
 const LengthCard = ({ name, length, decrement, increment }) => {
@@ -7,13 +8,21 @@ const LengthCard = ({ name, length, decrement, increment }) => {
     <div id="length-card">
       <div id={lowercaseName + "-label"}>{name} Length</div>
       <div id="adjust-card">
-        <button id={lowercaseName + "-decrement"} onClick={decrement}>
+        <Button
+          variant="success"
+          id={lowercaseName + "-decrement"}
+          onClick={decrement}
+        >
           -
-        </button>
+        </Button>
         <span id={lowercaseName + "-length"}>{length}</span>
-        <button id={lowercaseName + "-increment"} onClick={increment}>
+        <Button
+          variant="success"
+          id={lowercaseName + "-increment"}
+          onClick={increment}
+        >
           +
-        </button>
+        </Button>
       </div>
     </div>
   );
