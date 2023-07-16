@@ -7,7 +7,7 @@ const defaultSessionLength = 25;
 const defaultTime = defaultSessionLength * 60;
 
 function App() {
-  const [time, setTime] = useState(3);
+  const [time, setTime] = useState(defaultTime);
   const [start, setStart] = useState(false);
   const [breakLength, setBreakLength] = useState(defaultBreakLength);
   const [sessionLength, setSessionLength] = useState(defaultSessionLength);
