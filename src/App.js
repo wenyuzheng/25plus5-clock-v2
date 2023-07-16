@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import DisplayTime from "./Components/DisplayTime";
+import audioFile from "./assets/audio/beep.mp3";
 
 const defaultBreakLength = 5;
 const defaultSessionLength = 25;
@@ -14,10 +15,13 @@ function App() {
   const [isSession, setIsSession] = useState(true);
 
   useEffect(() => {
+    const beep = document.getElementById("beep");
+
     if (!start) {
       return;
     }
     if (time < 0) {
+      beep.play();
       setTime(isSession ? breakLength * 60 : sessionLength * 60);
       setIsSession(!isSession);
     }
@@ -92,6 +96,7 @@ function App() {
       <button id="reset" onClick={handleReset}>
         reset
       </button>
+      <audio id="beep" src={audioFile} />
     </div>
   );
 }
